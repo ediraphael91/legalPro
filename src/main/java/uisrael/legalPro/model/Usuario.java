@@ -26,4 +26,5 @@ public class Usuario implements Serializable {
 	private String correo;
 	private String rol;
 	private boolean estado;
+	private String test;
 }
