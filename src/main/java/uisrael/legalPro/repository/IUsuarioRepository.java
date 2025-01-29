@@ -8,8 +8,6 @@ import uisrael.legalPro.model.Usuario;
 public interface IUsuarioRepository extends JpaRepository<Usuario,Integer>{
 	
 	Optional<Usuario> findByNombre(String nombre);
-	Optional<Usuario> findByApellido(String apellido);
-	Optional<Usuario> findByCedula(String cedula);
 	Optional<Usuario> findByCorreo(String correo);
 
 }
