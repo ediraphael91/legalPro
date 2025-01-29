@@ -1,5 +1,15 @@
 package uisrael.legalPro.repository;
 
-public interface IUsuarioRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+import uisrael.legalPro.model.Usuario;
+
+public interface IUsuarioRepository extends JpaRepository<Usuario,Integer>{
+	
+	Optional<Usuario> findByNombre(String nombre);
+	Optional<Usuario> findByApellido(String apellido);
+	Optional<Usuario> findByCedula(String cedula);
+	Optional<Usuario> findByCorreo(String correo);
 
 }
