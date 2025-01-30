@@ -2,6 +2,8 @@ package uisrael.legalPro.service.impl;
 import uisrael.legalPro.model.Usuario;
 import uisrael.legalPro.repository.IUsuarioRepository;
 import uisrael.legalPro.service.IUsuarioService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,30 +11,31 @@ import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService{
-	private final IUsuarioRepository usuarioRepository;
+	@Autowired
+	private IUsuarioRepository repoUsuario;
+
+	@Override
+	public void insertarUsuario(Usuario usuarioNuevo) {
+		try {
+			repoUsuario.save(usuarioNuevo);
+		} catch (Exception e) {
+			System.out.println("erro:"+ e.getMessage());
+		}		
+	}
+
+	@Override
+	public List<Usuario> listarUsuario() {
+		return repoUsuario.findAll();
+	}
+
+	@Override
+	public Usuario buscarUsuarioId(int idUsuario) {
+		return repoUsuario.findById(idUsuario).get();
+	}
+
+	@Override
+	public void eliminarUsuarioId(int idUsuario) {
+		repoUsuario.deleteById(idUsuario);
 	
-	public UsuarioServiceImpl(IUsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
-	@Override
-	public List<Usuario> listarUsuarios() {
-		  return usuarioRepository.findAll();
-	}
-
-	@Override
-	public Optional<Usuario> obtenerUsuarioPorId(int IdUsuario) {
-		return usuarioRepository.findById(IdUsuario);
-	}
-
-	@Override
-	public Usuario guardarUsuario(Usuario usuario) {
-		return usuarioRepository.save(usuario);
-	}
-
-	@Override
-	public void eliminarUsuario(int IdUsuario) {
-		usuarioRepository.deleteById(IdUsuario);		
-	}
-
+ }
 }

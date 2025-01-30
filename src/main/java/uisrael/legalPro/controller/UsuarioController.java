@@ -1,44 +1,36 @@
 package uisrael.legalPro.controller;
 
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import uisrael.legalPro.model.Usuario;
 import uisrael.legalPro.service.IUsuarioService;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
-@RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
-	private final IUsuarioService usuarioService;
-
-    public UsuarioController(IUsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-
-    @GetMapping
-    public List<Usuario> listarUsuarios() {
-        return usuarioService.listarUsuarios();
-    }
-
-    @GetMapping("/{IdUsuario}")
-    public Optional<Usuario> obtenerUsuario(@PathVariable int IdUsuario) {
-        return usuarioService.obtenerUsuarioPorId(IdUsuario);
-    }
-
-    @PostMapping
-    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.guardarUsuario(usuario);
-    }
-
-    @DeleteMapping("/{IdUsuario}")
-    public void eliminarUsuario(@PathVariable int IdUsuario) {
-        usuarioService.eliminarUsuario(IdUsuario);
-    }
-
+@Controller
+public class UsuarioController implements Serializable{
+	/**
+	 * 
+	 */
+	@Autowired
+	private IUsuarioService servicioUsuario;
+	private static final long serialVersionUID = 1L;
+	
+	@GetMapping("listausuario")//Direccion de url para ingresar a la pagina
+	public String abrirUsuario(Model model) {
+		
+		List<Usuario> listaUsuarioBD=servicioUsuario.listarUsuario();
+		model.addAttribute("datosUsuario", listaUsuarioBD);		
+		return"/usuario/listaUsuario";//direccion donde esta la pagina con el html
+	
+	
+	
+	
 }
+	}

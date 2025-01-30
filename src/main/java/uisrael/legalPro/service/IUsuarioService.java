@@ -6,9 +6,12 @@ import java.util.Optional;
 
 public interface IUsuarioService {
 	
-	List<Usuario> listarUsuarios();
-    Optional<Usuario> obtenerUsuarioPorId(int IdUsuario);
-    Usuario guardarUsuario(Usuario usuario);
-    void eliminarUsuario(int IdUsuario);
+	public void insertarUsuario(Usuario usuarioNuevo);
+	
+	public List<Usuario> listarUsuario();
+	
+	public Usuario buscarUsuarioId(int idUsuario);
+
+	public void eliminarUsuarioId(int idUsuario);
 
 }

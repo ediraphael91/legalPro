@@ -18,13 +18,13 @@ class LegalProApplicationTests {
 	void contextLoads() {
 		Usuario nuevoUsuario = new Usuario();
 		nuevoUsuario.setNombre_usu("Edison");
-		nuevoUsuario.setCorreo("edi@gmail.com");		
+		nuevoUsuario.setCorreo("ed@gmail.com");		
 		nuevoUsuario.setRol("Abogado");
 		nuevoUsuario.setTelefono("09343433344");
 		nuevoUsuario.setContrasena_usu("edi123");
-		usuarioService.guardarUsuario(nuevoUsuario);
+		usuarioService.insertarUsuario(nuevoUsuario);
 		
-		List<Usuario> lista = usuarioService.listarUsuarios();
+		List<Usuario> lista = usuarioService.listarUsuario();
 		for (Usuario usuario : lista) {
 			System.out.println(usuario.getNombre_usu()+" - "+usuario.getContrasena_usu());
 		}
