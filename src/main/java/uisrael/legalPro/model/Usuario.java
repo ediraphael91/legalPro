@@ -49,3 +49,4 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "fkUsuario")
 	private List<Tarea> listaTarea = new ArrayList<>();
 }
+

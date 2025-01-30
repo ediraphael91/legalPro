@@ -10,7 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -42,9 +43,13 @@ public class Tarea implements Serializable{/**
 		Cerrado
 	}
 	
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
 	private Usuario fkUsuario;
-	@OneToMany
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "id_caso")
 	private Caso fkCaso;
 
 }
