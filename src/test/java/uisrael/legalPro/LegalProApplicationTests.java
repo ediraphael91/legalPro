@@ -18,10 +18,10 @@ class LegalProApplicationTests {
 	void contextLoads() {
 		Usuario nuevoUsuario = new Usuario();
 		nuevoUsuario.setNombre_usu("Edison");
-		nuevoUsuario.setContrasena_usu("edi@gmail.com");
-		nuevoUsuario.setRol(null);
+		nuevoUsuario.setCorreo("edi@gmail.com");		
+		nuevoUsuario.setRol("Abogado");
 		nuevoUsuario.setTelefono("09343433344");
-		nuevoUsuario.setContrasena_usu("ffff");
+		nuevoUsuario.setContrasena_usu("edi123");
 		usuarioService.guardarUsuario(nuevoUsuario);
 		
 		List<Usuario> lista = usuarioService.listarUsuarios();
