@@ -36,7 +36,7 @@ public class Tarea implements Serializable{/**
 		Alta
 	}
 	@Enumerated(EnumType.STRING)
-	private progreso pogreso;
+	private progreso progreso;
 	public enum progreso{
 		Iniciado,
 		En_Proceso,
