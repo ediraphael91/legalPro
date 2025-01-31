@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{index}">
+
+<body>
+	<!-- INICIO CONTENEDOR -->
+	<div layout:fragment="contenedor">
+
+		<div class="pagetitle">
+			<h1>Ingreso de Casos</h1>
+		</div>
+		<hr>
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"></h5>
+				<!--DESDE AQUI -->
+				<form th:action="@{/guardarcli}" th:object="${nuevo}" method="post">
+
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Nombre</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nombre_cli}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Correo</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{correo_cli}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Telefono</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{telefono_cli}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Cedula</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{cedula_cli}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Contraseña</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{contrasena_cli}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Rol</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{rol_cli}" class="form-control">
+						</div>
+					</div>
+					
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Descripción</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nombre_cli}" class="form-control">
+						</div>
+					</div>
+
+					<label class="col-sm-2 col-form-label">Selecione Caso</label>
+					<div class="col-sm-10">
+						<select class="form-select" aria-label="Default select example">
+
+							<option value="1">Penal</option>
+							<option value="2">Civil</option>
+							<option value="3">Laboral</option>
+							<option value="3">Fiscal</option>
+						</select>
+					</div> <br>
+
+					<label for="inputDate" class="col-sm-2 col-form-label">Fecha Inicial</label>
+					<div class="col-sm-10">
+						<input type="date" class="form-control">
+					</div>
+					<label for="inputDate" class="col-sm-2 col-form-label">Fecha Final</label>
+					<div class="col-sm-10">
+						<input type="date" class="form-control">
+					</div>
+					<label class="col-sm-2 col-form-label">Seleccione Estado</label>
+					<div class="col-sm-10">
+						<select class="form-select" aria-label="Default select example">
+
+							<option value="1">Ingresado</option>
+							<option value="2">En_Revisión</option>
+							<option value="3">Finalizado</option>
+						</select>
+					</div>
+					<br><br>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label"></label>
+						<div class="col-sm-3">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<input type="hidden">
+						</div>
+					</div>
+
+				</form><!-- End General Form Elements -->
+			</div>
+		</div>
+	</div>
+	<!-- FIN CONTENEDOR -->
+</body>
+
+</html>

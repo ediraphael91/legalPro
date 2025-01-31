@@ -6,11 +6,10 @@
 	<div layout:fragment="contenedor">
 
 		<div class="pagetitle">
-			<h1>Usuarios</h1>
+			<h1>Registro de Casos</h1>
 		</div>
-
 		<hr>
-		<a th:href="@{/nuevousuario}">
+		<a th:href="@{/nuevocliente}">
 			<button type="button" class="btn btn-primary mb-1">Nuevo</button><br><br>
 		</a>
 		<div class="card">
@@ -22,23 +21,22 @@
 						<tr>
 							<th scope="col">Id</th>
 							<th scope="col">Nombre</th>
-							<th scope="col">Correo</th>
-							<th scope="col">Rol</th>
 							<th scope="col">Teléfono</th>
+							<th scope="col">Cedula</th>
 							<th scope="col">Contraseña</th>
-							<th scope="col">Acciones</th>
+							<th scope="col">Rol</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="usuarios:${datosUsuario}">
-							<td th:text="${usuarios.id_usuario}"></td>
-							<td th:text="${usuarios.nombre_usu}"></td>
-							<td th:text="${usuarios.correo}"></td>
-							<td th:text="${usuarios.rol_usu}"></td>
-							<td th:text="${usuarios.telefono}"></td>
-							<td th:text="${usuarios.contrasena_usu}"></td>
-
-
+						<tr th:each="cliente:${datosUsuario}">
+							<td th:text="${cliente.id_cliente}"></td>
+							<td th:text="${cliente.nombre_cli}"></td>
+							<td th:text="${cliente.telefono_cli}"></td>
+							<td th:text="${cliente.cedula_cli}"></td>
+							<td th:text="${cliente.contrasena_cli}"></td>
+							<td th:text="${cliente.rol_cli}"></td>
+							
+							<!---
 							<td>
 								<a th:href="@{/actualizarusuario/}+${usuarios.id_usuario}">
 									<button type="button" class="btn btn-warning mb-1">Editar</button>
@@ -47,7 +45,7 @@
 									onclick="return confirm('¿Seguro que desea eliminar el registro?');">
 									<button type="button" class="btn btn-danger mb-1">Eliminar</button>
 								</a>
-							</td>
+							</td> -->
 						</tr>
 					</tbody>
 				</table>
