@@ -21,10 +21,10 @@ class LegalProApplicationTests {
 		nuevoUsuario.setContrasena_usu("edi@gmail.com");
 		nuevoUsuario.setRol_usu(null);
 		nuevoUsuario.setTelefono("09343433344");
-		nuevoUsuario.setContrasena_usu("ffff");
-		usuarioService.guardarUsuario(nuevoUsuario);
+		nuevoUsuario.setContrasena_usu("edi123");
+		usuarioService.insertarUsuario(nuevoUsuario);
 		
-		List<Usuario> lista = usuarioService.listarUsuarios();
+		List<Usuario> lista = usuarioService.listarUsuario();
 		for (Usuario usuario : lista) {
 			System.out.println(usuario.getNombre_usu()+" - "+usuario.getContrasena_usu());
 		}

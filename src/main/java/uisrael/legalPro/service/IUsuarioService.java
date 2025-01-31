@@ -5,9 +5,12 @@ import java.util.List;
 
 public interface IUsuarioService {
 	
-	List<Usuario> listarUsuarios();
-	public Usuario buscarPorId(Integer id);
-    Usuario guardarUsuario(Usuario usuario);
-    void eliminarUsuario(int IdUsuario);
-    Usuario findByCorreo(String correo);   
+	public void insertarUsuario(Usuario usuarioNuevo);
+	
+	public List<Usuario> listarUsuario();
+	
+	public Usuario buscarUsuarioId(int idUsuario);
+
+	public void eliminarUsuarioId(int idUsuario);
+
 }
