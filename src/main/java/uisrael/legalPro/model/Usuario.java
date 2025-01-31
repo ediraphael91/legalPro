@@ -30,9 +30,9 @@ public class Usuario implements Serializable {
 	@Column(nullable = false, length = 50)
 	private String nombre_usu;
 	@Column(nullable = false, unique = true, length = 50)
-	private String correo;
+	private String correo_usu;
 	@Enumerated(EnumType.STRING)
-	private rol rol;
+	private rol rol_usu;
 	public enum rol{
 		Admin,
 		Abogado,

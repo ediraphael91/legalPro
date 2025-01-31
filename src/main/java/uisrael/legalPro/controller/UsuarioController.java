@@ -10,7 +10,6 @@ import uisrael.legalPro.service.IUsuarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -27,8 +26,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{IdUsuario}")
-    public Optional<Usuario> obtenerUsuario(@PathVariable int IdUsuario) {
-        return usuarioService.obtenerUsuarioPorId(IdUsuario);
+    public Usuario obtenerUsuario(@PathVariable int IdUsuario) {
+        return usuarioService.buscarPorId(IdUsuario);
     }
 
     @PostMapping

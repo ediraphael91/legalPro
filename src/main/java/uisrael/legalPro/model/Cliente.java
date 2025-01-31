@@ -20,11 +20,12 @@ public class Cliente implements Serializable {/**
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_cliente;
-	private String combre_cli;
+	private String nombre_cli;
 	private String correo_cli;
 	private String telefono_cli;
 	private String cedula_cli;
 	private String contrasena_cli;
+	private String rol_cli;
 	
 	@OneToMany(mappedBy = "fkCliente")
 	private List<Caso> listaCaso = new ArrayList<>();

@@ -19,7 +19,7 @@ class LegalProApplicationTests {
 		Usuario nuevoUsuario = new Usuario();
 		nuevoUsuario.setNombre_usu("Edison");
 		nuevoUsuario.setContrasena_usu("edi@gmail.com");
-		nuevoUsuario.setRol(null);
+		nuevoUsuario.setRol_usu(null);
 		nuevoUsuario.setTelefono("09343433344");
 		nuevoUsuario.setContrasena_usu("ffff");
 		usuarioService.guardarUsuario(nuevoUsuario);
