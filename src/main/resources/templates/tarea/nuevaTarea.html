@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{index}">
+<head>
+<style>
+.horizontal-gallery {
+	display: flex;
+	justify-content: center; /* Centra las imágenes horizontalmente */
+	gap: 20px; /* Espacio entre las imágenes */
+}
+
+.photo-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.photo-wrapper img {
+	max-width: 200px; /* Ajusta el tamaño de la imagen a tu preferencia */
+	margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.photo-label {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+</style>
+<meta charset="UTF-8">
+<title>Equipo</title>
+</head>
+
+<body>
+
+	<div layout:fragment="contenedor">
+
+		<div id="page-wrapper">
+			<div class="container-fluid">
+
+				<form th:action="@{/guardartarea}" th:object="${nuevo}"
+					method="post">
+
+					<input type="hidden" th:field="*{id_tarea}">
+
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Título</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{titulo}" class="form-control">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Fecha
+							Asignada</label>
+						<div class="col-sm-10">
+							<input type="date" th:field="*{fechaAsignada}"
+								class="form-control Input-Date">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">Fecha
+							Límite</label>
+						<div class="col-sm-10">
+							<input type="date" th:field="*{fechaLimite}"
+								class="form-control Input-Date">
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Prioridad</label> <select
+							class="form-select" th:field="*{prioridad}">
+							<option value="0">-Seleccione-</option>
+							<option th:each="prioridad: ${prioridades}"
+								th:text="${prioridad}" th:value="${prioridad}"></option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Progreso</label> <select
+							class="form-select" th:field="*{progreso}">
+							<option value="0">-Seleccione-</option>
+							<option th:each="progreso: ${progresos}" th:text="${progreso}"
+								th:value="${progreso}"></option>
+						</select>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label"></label>
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+
+				</form>
+				<!-- End General Form Elements -->
+<script>
+	document.addEventListener('DOMContentLoaded', (event) => {
+
+		// Selecciona todos los campos de entrada con la clase 'Input-Date'
+		var inputElements = document.querySelectorAll('input.Input-Date');
+
+		inputElements.forEach((inputElement) => {
+			// Obtén el valor actual del atributo 'value'
+			var valorActual = inputElement.getAttribute('value');
+
+			// Verifica que el valor actual no esté vacío
+			if (valorActual) {
+				// Transforma el valor de la fecha
+				var transformedDate = transformDate(valorActual);
+
+				// Carga el valor transformado en el input de fecha
+				inputElement.value = transformedDate;
+				
+				// Verifica el valor actualizado
+				console.log('Fecha transformada y establecida:', inputElement);
+			} else {
+				console.log('El valor del campo de entrada fecha está vacío en la BD.');
+			}
+		});
+
+		// Función para convertir una fecha en formato DD/MM/YY a YYYY-MM-DD
+		function transformDate(value) {
+			// Dividir el valor por '/'
+			var parts = value.split('/');
+			if (parts.length === 3) {
+				// Asume que el valor está en formato DD/MM/YY
+				var day = parts[0].padStart(2, '0');
+				var month = parts[1].padStart(2, '0');
+				var year = '20' + parts[2]; // Asume que el año es de dos dígitos y lo convierte a cuatro dígitos
+
+				// Retornar la fecha en formato YYYY-MM-DD
+				return `${year}-${month}-${day}`;
+			}
+			return 'Formato_Desconocido'; // Retornar una cadena si el formato no es reconocido
+		}
+	});									
+									
+	</script>
+	
+			</div>
+		</div>
+
+	</div>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', (event) => {
+
+		// Selecciona todos los campos de entrada con la clase 'Input-Date'
+		var inputElements = document.querySelectorAll('input.Input-Date');
+
+		inputElements.forEach((inputElement) => {
+			// Obtén el valor actual del atributo 'value'
+			var valorActual = inputElement.getAttribute('value');
+
+			// Verifica que el valor actual no esté vacío
+			if (valorActual) {
+				// Transforma el valor de la fecha
+				var transformedDate = transformDate(valorActual);
+
+				// Carga el valor transformado en el input de fecha
+				inputElement.value = transformedDate;
+				
+				// Verifica el valor actualizado
+				console.log('Fecha transformada y establecida:', inputElement);
+			} else {
+				console.log('El valor del campo de entrada fecha está vacío en la BD.');
+			}
+		});
+
+		// Función para convertir una fecha en formato DD/MM/YY a YYYY-MM-DD
+		function transformDate(value) {
+			// Dividir el valor por '/'
+			var parts = value.split('/');
+			if (parts.length === 3) {
+				// Asume que el valor está en formato DD/MM/YY
+				var day = parts[0].padStart(2, '0');
+				var month = parts[1].padStart(2, '0');
+				var year = '20' + parts[2]; // Asume que el año es de dos dígitos y lo convierte a cuatro dígitos
+
+				// Retornar la fecha en formato YYYY-MM-DD
+				return `${year}-${month}-${day}`;
+			}
+			return 'Formato_Desconocido'; // Retornar una cadena si el formato no es reconocido
+		}
+	});									
+									
+	</script>
+
+
+</body>
+
+</html>

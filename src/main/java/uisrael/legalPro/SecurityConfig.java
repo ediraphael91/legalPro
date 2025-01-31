@@ -25,8 +25,8 @@ public class SecurityConfig {
 		http
 			.authorizeHttpRequests(auth -> auth
 					.requestMatchers("/login", "/css/**", "/js/**", "assets/**", "/error").permitAll()
-					.requestMatchers("/","/index").authenticated() //requiere autenticación
-					.requestMatchers("/cliente/**").hasRole("CLIENTE")
+					.requestMatchers("/","/index","/listartarea/**").authenticated() //requiere autenticación
+					.requestMatchers("/cliente/**","/listartarea/**").hasRole("CLIENTE")
 					.anyRequest().authenticated()
 			)
 			.formLogin(form -> form
@@ -37,7 +37,10 @@ public class SecurityConfig {
 					.permitAll()
 			)
 			.logout(logout -> logout
+				.logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout=true")
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
 				.permitAll()
 			)
 			.userDetailsService(userDetailsService)
