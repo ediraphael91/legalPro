@@ -27,7 +27,7 @@ public class PlazoController implements Serializable{
     @GetMapping("/listaPlazos")
     public String listarPlazos(Model model) {
         List<Plazo> listaPlazosBD = servicioPlazo.getAllPlazos();
-        model.addAttribute("datosPlazos", listaPlazosBD);
+        model.addAttribute("datosPlazo", listaPlazosBD);
         return "plazo/listaPlazos"; // Página que muestra la lista de plazos
     }
 
@@ -46,19 +46,19 @@ public class PlazoController implements Serializable{
     }
 
     // Actualizar un plazo existente
-    @GetMapping("/actualizarplazo/{idPlazo}")
-    public String actualizarPlazo(@PathVariable(value = "idPlazo") int idPlazo, Model model) {
-        Plazo plazoActualizar = servicioPlazo.getPlazoById(idPlazo).orElse(null);
+    @GetMapping("/actualizarplazo/{id_plazo}")
+    public String actualizarplazo(@PathVariable(value = "id_plazo") Integer id_plazo, Model model) {
+        Plazo plazoActualizar = servicioPlazo.getPlazoById(id_plazo).orElse(null);
         if (plazoActualizar != null) {
             model.addAttribute("nuevo", plazoActualizar);
-            return "/plazo/nuevoPlazo"; // Página para editar un plazo
+            return "plazo/nuevoPlazo"; // Página para editar un plazo
         }
         return "redirect:/listaPlazos"; // Si no encuentra el plazo, redirige a la lista
     }
 
     // Eliminar un plazo por ID
-    @RequestMapping("/eliminarplazo/{idPlazo}")
-    public String eliminarPlazo(@PathVariable(value = "idPlazo") int idPlazo) {
+    @RequestMapping("/eliminarplazo/{id_plazo}")
+    public String eliminarPlazo(@PathVariable(value = "id_plazo") Integer idPlazo) {
         servicioPlazo.deletePlazo(idPlazo);
         return "redirect:/listaPlazos"; // Redirige a la lista de plazos después de eliminar
     }
@@ -68,7 +68,7 @@ public class PlazoController implements Serializable{
     public String plazosPorCriticidad(@PathVariable(value = "criticidad") String criticidad, Model model) {
         List<Plazo> plazosFiltrados = servicioPlazo.getPlazosByCriticidad(criticidad);
         model.addAttribute("datosPlazos", plazosFiltrados);
-        return "/plazo/listaPlazos"; // Muestra la lista filtrada de plazos
+        return "plazo/listaPlazos"; // Muestra la lista filtrada de plazos
     }
 
 }
