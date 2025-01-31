@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{index}">
+
+	<!-- INICIO CONTENEDOR -->
+	<div layout:fragment="contenedor">
+
+		<div class="pagetitle">
+			<h1>Registro de Casos</h1>
+		</div>
+		<hr>
+		<a th:href="@{/nuevocliente}">
+			<button type="button" class="btn btn-primary mb-1">Nuevo</button><br><br>
+		</a>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"></h5>
+				<!--DESDE AQUI -->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Teléfono</th>
+							<th scope="col">Cedula</th>
+							<th scope="col">Contraseña</th>
+							<th scope="col">Rol</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente:${datosUsuario}">
+							<td th:text="${cliente.id_cliente}"></td>
+							<td th:text="${cliente.nombre_cli}"></td>
+							<td th:text="${cliente.telefono_cli}"></td>
+							<td th:text="${cliente.cedula_cli}"></td>
+							<td th:text="${cliente.contrasena_cli}"></td>
+							<td th:text="${cliente.rol_cli}"></td>
+							
+							<!---
+							<td>
+								<a th:href="@{/actualizarusuario/}+${usuarios.id_usuario}">
+									<button type="button" class="btn btn-warning mb-1">Editar</button>
+								</a>
+								<a th:href="@{/eliminarusuario/}+${usuarios.id_usuario}"
+									onclick="return confirm('¿Seguro que desea eliminar el registro?');">
+									<button type="button" class="btn btn-danger mb-1">Eliminar</button>
+								</a>
+							</td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	<!-- FIN CONTENEDOR -->
+</html>
