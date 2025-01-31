@@ -10,8 +10,8 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link th:href="@{assets/img/favicon.png}" rel="icon">
-<link th:href="@{assets/img/apple-touch-icon.png}"
+<link th:href="@{/assets/img/favicon.png}" rel="icon">
+<link th:href="@{/assets/img/apple-touch-icon.png}"
 	rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -21,21 +21,21 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link th:href="@{assets/vendor/bootstrap/css/bootstrap.min.css}"
+<link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet">
-<link th:href="@{assets/vendor/bootstrap-icons/bootstrap-icons.css}"
+<link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}"
 	rel="stylesheet">
-<link th:href="@{assets/vendor/boxicons/css/boxicons.min.css}"
+<link th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}"
 	rel="stylesheet">
-<link th:href="@{assets/vendor/quill/quill.snow.css}" rel="stylesheet">
-<link th:href="@{assets/vendor/quill/quill.bubble.css}" rel="stylesheet">
-<link th:href="@{assets/vendor/remixicon/remixicon.css}"
+<link th:href="@{/assets/vendor/quill/quill.snow.css}" rel="stylesheet">
+<link th:href="@{/assets/vendor/quill/quill.bubble.css}" rel="stylesheet">
+<link th:href="@{/assets/vendor/remixicon/remixicon.css}"
 	rel="stylesheet">
-<link th:href="@{assets/vendor/simple-datatables/style.css}"
+<link th:href="@{/assets/vendor/simple-datatables/style.css}"
 	rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link th:href="@{assets/css/style.css}" rel="stylesheet">
+<link th:href="@{/assets/css/style.css}" rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: NiceAdmin
@@ -53,7 +53,7 @@
 
 		<div class="d-flex align-items-center justify-content-between">
 			<a href="index.html" class="logo d-flex align-items-center"> <img
-				th:src="@{assets/img/logo.png}" alt=""> <span
+				th:src="@{/assets/img/logo.png}" alt=""> <span
 				class="d-none d-lg-block">Robotics Mind</span>
 			</a> <i class="bi bi-list toggle-sidebar-btn"></i>
 		</div>
@@ -168,7 +168,7 @@
 						</li>
 
 						<li class="message-item"><a href="#"> <img
-								th:src="@{assets/img/messages-1.jpg}" alt=""
+								th:src="@{/assets/img/messages-1.jpg}" alt=""
 								class="rounded-circle">
 								<div>
 									<h4>Maria Hudson</h4>
@@ -182,7 +182,7 @@
 						</li>
 
 						<li class="message-item"><a href="#"> <img
-								th:src="@{assets/img/messages-2.jpg}" alt=""
+								th:src="@{/assets/img/messages-2.jpg}" alt=""
 								class="rounded-circle">
 								<div>
 									<h4>Anna Nelson</h4>
@@ -196,7 +196,7 @@
 						</li>
 
 						<li class="message-item"><a href="#"> <img
-								th:src="@{assets/img/messages-3.jpg}" alt=""
+								th:src="@{/assets/img/messages-3.jpg}" alt=""
 								class="rounded-circle">
 								<div>
 									<h4>David Muldon</h4>
@@ -219,7 +219,7 @@
 				<li class="nav-item dropdown pe-3"><a
 					class="nav-link nav-profile d-flex align-items-center pe-0"
 					href="#" data-bs-toggle="dropdown"> <img
-						th:src="@{assets/img/profile-img.jpg}" alt="Profile"
+						th:src="@{/assets/img/profile-img.jpg}" alt="Profile"
 						class="rounded-circle"> <span
 						class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
 				</a>
@@ -456,7 +456,7 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Usuarios</h1>
+			<h1>Nuevo Usuario</h1>
 
 		</div>
 		<!-- End Page Title -->
@@ -467,51 +467,50 @@
 
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title"></h5>
+							<h5 class="card-title"></h5>						
 							
-	<a th:href="@{/nuevousuario}">
-		<button type="button" class="btn btn-primary mb-1">Nuevo</button><br><br>
-	</a>
-<p><table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Correo</th>
-      <th scope="col">Rol</th>       
-      <th scope="col">Teléfono</th>
-      <th scope="col">Contraseña</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="usuarios:${datosUsuario}">
-     	<td th:text="${usuarios.id_usuario}"></td>
-		<td th:text="${usuarios.nombre_usu}"></td>
-		<td th:text="${usuarios.correo}"></td>
-		<td th:text="${usuarios.rol}"></td>
-		<td th:text="${usuarios.contrasena_usu}"></td>
-		<td th:text="${usuarios.telefono}"></td>
-		
-     	
-     	
-     	<td> 
-     		<a th:href="@{/actualizarusuario/}+${usuarios.id_usuario}">
-				<button type="button" class="btn btn-warning mb-1">Editar</button>
-			</a>
-			
-			<a th:href="@{/eliminarusuario/}+${usuarios.id_usuario}"
-			   onclick="return confirm('¿Seguro que desea eliminar el registro?');">
-			   <button type="button" class="btn btn-danger mb-1">Eliminar</button>
-			</a>
-			
-		</td>
-	
-    </tr>   
-  </tbody>
-</table>
-              </p>
-							
+			<form th:action="@{/guardar}" th:object="${nuevo}" method="post">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nombre</label>
+                  <div class="col-sm-10">
+                    <input type="text" th:field="*{nombre_usu}" class="form-control">
+                  </div>                  
+                </div> 
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Correo</label>
+                  <div class="col-sm-10">
+                    <input type="text" th:field="*{correo}" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Rol</label>
+                  <div class="col-sm-10">
+                    <input type="text" th:field="*{rol}" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Teléfono</label>
+                  <div class="col-sm-10">
+                    <input type="text" th:field="*{telefono}" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Contreseña</label>
+                  <div class="col-sm-10">
+                    <input type="text" th:field="*{contrasena_usu}" class="form-control">
+                  </div>
+                </div>                   
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <input type="hidden" th:field="*{id_usuario}">
+                  </div>
+                </div>
+
+              </form><!-- End General Form Elements -->
+              							
             </div>
           </div>
 
@@ -543,18 +542,18 @@
 		class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
-  <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-  <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
-  <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
-  <script th:src="@{assets/vendor/quill/quill.min.js}"></script>
+  <script th:src="@{/assets/vendor/apexcharts/apexcharts.min.js}"></script>
+  <script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/assets/vendor/chart.js/chart.umd.js}"></script>
+  <script th:src="@{/assets/vendor/echarts/echarts.min.js}"></script>
+  <script th:src="@{/assets/vendor/quill/quill.min.js}"></script>
   <script
-		th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
-  <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
-  <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+		th:src="@{/assets/vendor/simple-datatables/simple-datatables.js}"></script>
+  <script th:src="@{/assets/vendor/tinymce/tinymce.min.js}"></script>
+  <script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
 
   <!-- Template Main JS File -->
-  <script th:src="@{assets/js/main.js}"></script>
+  <script th:src="@{/assets/js/main.js}"></script>
 
 </body>
 
