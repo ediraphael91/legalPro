@@ -52,7 +52,7 @@ public class Usuario implements Serializable {
 	// Método adicional para aceptar String y convertirlo en Enum Rol
 	public void setRol(String rolString) {
 		try {
-			this.rol = Rol.valueOf(rolString); // Convierte el String a Enum
+			this.rol_usu = Rol.valueOf(rolString); // Convierte el String a Enum
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error: El rol '" + rolString + "' no es válido.");
 		}
